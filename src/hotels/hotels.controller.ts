@@ -11,7 +11,6 @@ export class HotelsController {
     @Get('/best-offers-airport')
     async getBestOffers(
         @Query('airportId') airportId: number,
-        @Query('maxDistance') maxDistance: number = 50,
     ) {
         return await this.hotelsService.getOffersByAirport(airportId);
     }
