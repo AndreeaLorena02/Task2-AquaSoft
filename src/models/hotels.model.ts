@@ -1,6 +1,7 @@
 import { Column, ForeignKey, Model, PrimaryKey, Table } from 'sequelize-typescript';
 import { Regions } from './regions.model';
 import { Cities } from './cities.model';
+import { HotelGroups } from './hotelGroups.model';
 
 @Table({ tableName: 'Hotels', timestamps: false })
 export class Hotels extends Model {
@@ -27,4 +28,8 @@ export class Hotels extends Model {
 
     @Column
     Address: string;
+
+    @ForeignKey(() => HotelGroups)
+    @Column
+    GroupID: number;
 }

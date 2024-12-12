@@ -8,6 +8,14 @@ import { JwtAuthGuard } from 'src/jwt/jwt.guard';
 export class HotelsController {
     constructor(private hotelsService: HotelsService) { }
 
+    @Get('/best-offers-airport')
+    async getBestOffers(
+        @Query('airportId') airportId: number,
+        @Query('maxDistance') maxDistance: number = 50,
+    ) {
+        return await this.hotelsService.getOffersByAirport(airportId);
+    }
+
     @Get()
     async getAllHotels(): Promise<Hotels[]> {
         return await this.hotelsService.findAll();
